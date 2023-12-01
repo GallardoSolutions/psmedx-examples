@@ -1,0 +1,17 @@
+<div id="content">
+    <label for="psmedx">PSMEDx Domain:</label><br>
+    <input type="text" x-model="$store.psmedx.domain" id="psmedx" placeholder="Enter PSMEDx domain"><br><br>
+
+    <label for="pubKey">PSMEDx Public Key:</label><br>
+    <input type="text" x-model="$store.psmedx.publicKey" id="pubKey" placeholder="Enter your PSMEDx Public Key"><br><br>
+
+    <h4>Here is the Image</h4><br>
+    <img id="image"
+         :src="$store.psmedx.domain + '/remove-background/?image_url=https://www.hitpromo.net/imageManager/show/55414_RED_Front_Blank.jpg&pub_api_key=' + $store.psmedx.publicKey"
+         alt="">
+    <hr>
+
+    <h2>Second Example with pure ajax</h2>
+    <button @click="$store.psmedx.fetchImage()">Fetch Image</button>
+
+</div>

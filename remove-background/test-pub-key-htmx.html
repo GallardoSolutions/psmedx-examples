@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Remove Background using Public Key</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Example of how to use PSMEDx API using public keys. htmx and alpine.js are used to
+improve quality of the examples">
+    <meta name="author" content="PSMEDx">
+    <meta name="keywords" content="PSMEDx, PSMEDx API, remove background, remove background API, remove background from image, remove background for Promotional Industry">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="//unpkg.com/htmx.org/dist/htmx.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin-left: 20px;
+        }
+
+        img {
+            height: 200px;
+        }
+
+
+        .htmx-settling img {
+            opacity: 0;
+        }
+
+        .loading {
+            transition: opacity 300ms ease-in;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('alpine initialized');
+            Alpine.store('psmedx', {
+                domain: 'https://psmedx.com',
+                publicKey: '36f1e0d5cca74b090facd55702537333',
+
+                fetchImage() {
+                    const imageUrl =
+                        this.domain + '/remove-background/?image_url=https://www.hitpromo.net/imageManager/show/55414_RED_Front_Blank.jpg&pub_api_key=' + this.publicKey;
+                    fetch(imageUrl)
+                        .then(response => response.blob())
+                        .then(blob => {
+                            const img = document.createElement('img');
+                            img.src = URL.createObjectURL(blob);
+                            document.body.appendChild(img);
+                        })
+                        .catch(e => console.error(e));
+                }
+            })
+        })
+
+
+    </script>
+</head>
+<body>
+<h1>Remove Background API</h1>
+
+<h4>The first image example changing the img.src</h4>
+
+
+<div id="content" hx-target="#content" hx-get="partial.html" hx-trigger="load">
+    <svg class="loading" width="32" height="32" viewBox="0 0 135 140" xmlns="http://www.w3.org/2000/svg" fill="#494949">
+        <rect y="10" width="15" height="120" rx="6">
+            <animate attributeName="height"
+                     begin="0.5s" dur="1s"
+                     values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                     repeatCount="indefinite"/>
+            <animate attributeName="y"
+                     begin="0.5s" dur="1s"
+                     values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                     repeatCount="indefinite"/>
+        </rect>
+        <rect x="30" y="10" width="15" height="120" rx="6">
+            <animate attributeName="height"
+                     begin="0.25s" dur="1s"
+                     values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                     repeatCount="indefinite"/>
+            <animate attributeName="y"
+                     begin="0.25s" dur="1s"
+                     values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                     repeatCount="indefinite"/>
+        </rect>
+        <rect x="60" width="15" height="140" rx="6">
+            <animate attributeName="height"
+                     begin="0s" dur="1s"
+                     values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                     repeatCount="indefinite"/>
+            <animate attributeName="y"
+                     begin="0s" dur="1s"
+                     values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                     repeatCount="indefinite"/>
+        </rect>
+        <rect x="90" y="10" width="15" height="120" rx="6">
+            <animate attributeName="height"
+                     begin="0.25s" dur="1s"
+                     values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                     repeatCount="indefinite"/>
+            <animate attributeName="y"
+                     begin="0.25s" dur="1s"
+                     values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                     repeatCount="indefinite"/>
+        </rect>
+        <rect x="120" y="10" width="15" height="120" rx="6">
+            <animate attributeName="height"
+                     begin="0.5s" dur="1s"
+                     values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                     repeatCount="indefinite"/>
+            <animate attributeName="y"
+                     begin="0.5s" dur="1s"
+                     values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                     repeatCount="indefinite"/>
+        </rect>
+    </svg>
+</div>
+
+</body>
+</html>
