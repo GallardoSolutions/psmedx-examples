@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PSMEDx Examples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Examples of how to use PSMEDx API">
+    <meta name="author" content="PSMEDx">
+    <meta name="keywords"
+          content="PSMEDx, PSMEDx API, remove background, remove background API, remove background from image, remove background for Promotional Industry, decorate API">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1><a id="user-content-psmedx-examples">
+
+    </a>PSMEDx Examples
+    </h1>
+    <p>Examples of how to use PSMEDx API</p>
+    <p>These pages will be published at <a
+            href="https://s3.amazonaws.com/www.gallardo.solutions/psmedx-examples/index.html" rel="nofollow">PSMEDx
+        Examples</a></p>
+    <h2>Resources:</h2>
+    <ul>
+        <li><a href="https://psmedx.com" rel="nofollow">PSMEDx</a></li>
+        <li><a href="https://psmedx.com/docs" rel="nofollow">PSMEDx docs</a></li>
+    </ul>
+    <h1>Easy of use</h1>
+    <p>
+        We are focussing here in how to use a <code>Public Key</code> that can be obtained from PSMEDx
+        website once you have an account.
+        With this <code>Public Key</code> you will be able to use the API without the need of a <code>Secret Key</code>
+        that is used for authentication. Meaning you can access to <code>GET</code> requests that provide images based
+        on query parameters.
+    </p>
+    <p>
+        In order for this public key to be secure, you need to add the allowed origin to your account.
+        This is done in the <code>Account</code> section of the website.
+    </p>
+    <h2>Example 1: Get an image without the background</h2>
+    <p>Basic example is this one:</p>
+    <div>
+        <code>
+            &lt;img src="https://api.psmedx.com/remove-background/?image_url=YOUR_IMAGE_URL&amp;pub_api_key=YOUR_PUBLIC_KEY" /&gt;
+        </code>
+    </div>
+    <br>
+    <a href="remove-background/test-pub-key-htmx.html">Better Example</a>
+    <h2>Example 2: Get decorated images based on an artwork(or logo)</h2>
+    <p>Basic example is this one:</p>
+    <code>
+        &lt;img src="https://api.psmedx.com/decorate/?blank_url=YOUR_BLANK_URL&amp;artwork_url=YOUR_ARTWORK_URL&amp;pub_api_key=YOUR_PUBLIC_KEY&amp;bounding_box_json=YOUR_BOUNDING_BOX" /&gt;
+    </code>
+    <p>
+        Ex. https://psmedx.com/decorate/?blank_url=https://s3.amazonaws.com/www.gallardo.solutions/products/Gildan Heavy Cotton Long Sleeve T-Shirt-ligth-blue.png&artwork_url=https://s3.amazonaws.com/www.gallardo.solutions/artworks/microsoft.png&bounding_box_json={"left":136,"upper":172,"right":282,"lower":300}&placement=Auto&emboss=false&pub_api_key=YOUR_PUBLIC_KEY
+    </p>
+    <br>
+    <a href="decorate/decorate.html">Better Example</a>
+    <hr>
+    <p>But we provide a more complete examples using <a href="https://htmx.org/" rel="nofollow">htmx</a>
+        and <a href="https://alpinejs.dev/" rel="nofollow">Alpine.js</a></p>
+</div>
+</body>
+</html>

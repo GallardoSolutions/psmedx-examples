@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Test Decorate API using Public Key</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Example of how to use PSMEDx API using public keys. htmx and alpine.js are used to improve quality of the examples">
+    <meta name="author" content="PSMEDx">
+    <meta name="keywords" content="PSMEDx, PSMEDx API, decorate, decorate API, decorate API for Promotional Industry">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="//unpkg.com/htmx.org/dist/htmx.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin-left: 20px;
+        }
+
+        img {
+            height: 300px;
+        }
+
+
+        .htmx-settling img {
+            opacity: 0;
+        }
+
+        .loading {
+            transition: opacity 300ms ease-in;
+        }
+    </style>
+</head>
+<body>
+<h1>Decorate API</h1>
+<main x-data="{
+    artworkUrl: 'https://s3.amazonaws.com/www.gallardo.solutions/artworks/microsoft.png',
+    publicKey: '36f1e0d5cca74b090facd55702537333' }">
+    <label for="pubKey">PSMEDx Public Key:</label><br>
+    <input type="text" x-model="publicKey" id="pubKey" placeholder="Enter your PSMEDx Public Key"><br><br>
+
+    <div class="mt-1">
+        <label for="artworkUrl">Artwork</label><br>
+        <input type="text" id="artworkUrl" name="artwork_url" x-model="artworkUrl" list="artworks" required
+               size="100" class="w-full border-gray-300 rounded-lg shadow-sm"/>
+        <datalist id="artworks">
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/microsoft.png">
+                Microsoft
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/amazon-logo.png">
+                Amazon
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/amazon-logo-white.png">
+                Amazon White
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/brex.png">
+                Brex
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/brex-logo-white.png">
+                Brex White
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/apple-logo.png">
+                Apple
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/apple-logo-white.png">
+                Apple White
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/google-logo.png">
+                Google
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/openai-logo.png">
+                OpenAI
+            </option>
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/openai-logo-white.png">
+                OpenAI White
+            </option>
+        </datalist>
+        <div id="result" x-data="{
+        product_path: 'https://s3.amazonaws.com/www.gallardo.solutions/products/',
+        images: [
+            'Gildan+Heavy+Cotton+Long+Sleeve+T-Shirt-ligth-blue.png',
+            'Gildan Heavy Cotton T-Shirt.png',
+            'Gildan Heavy Cotton Long Sleeve T-Shirt-navy.png',
+            'Gildan Heavy Cotton T-Shirt-cardinal.png'
+        ],
+        bounding_boxes: [
+            '{&quot;left&quot;: 136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
+            '{&quot;left&quot;: 136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
+            '{&quot;left&quot;: 136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
+            '{&quot;left&quot;: 136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}'
+            ],
+        combinedArray: [],
+        api: 'https://psmedx.com/decorate/',
+
+        init() {
+            this.combinedArray = this.images.map((item, index) => [item, this.bounding_boxes[index]]);
+        }
+        }">
+
+            <template x-for="[image, bb] in combinedArray">
+                <div>
+                    <img :src="product_path + image" alt="">
+                    <img :src="api + '?blank_url=' + product_path + image + '&bounding_box_json=' + bb + '&artwork_url=' + artworkUrl + '&pub_api_key=' + publicKey"
+                         alt=""/>
+                </div>
+
+            </template>
+        </div>
+
+    </div>
+    </div>
+</main>
+
+
+<p>
+    <bold>Note:</bold>
+    The example using Ajax will be similar to
+    <a href="../remove-background/test-pub-key-htmx.html">Remove Background Example</a></p>
+</body>
+</html>
