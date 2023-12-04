@@ -19,6 +19,7 @@
 
         img {
             height: 300px;
+            width: 300px;
         }
 
 
@@ -40,9 +41,11 @@
     <input type="text" x-model="publicKey" id="pubKey" placeholder="Enter your PSMEDx Public Key"><br><br>
 
     <div class="mt-1">
-        <label for="artworkUrl">Artwork</label><br>
+        <label for="artworkUrl">Select Artwork</label><br>
         <input type="text" id="artworkUrl" name="artwork_url" x-model="artworkUrl" list="artworks" required
                size="100" class="w-full border-gray-300 rounded-lg shadow-sm"/>
+        <br><br>
+        <span>**You can also use your own artwork url</span>
         <datalist id="artworks">
             <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/microsoft.png">
                 Microsoft
@@ -50,20 +53,20 @@
             <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/amazon-logo.png">
                 Amazon
             </option>
-            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/amazon-logo-white.png">
-                Amazon White
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/amazon-logo-light.png">
+                Amazon Light
             </option>
             <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/brex.png">
                 Brex
             </option>
-            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/brex-logo-white.png">
-                Brex White
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/brex-logo-light.png">
+                Brex Light
             </option>
             <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/apple-logo.png">
                 Apple
             </option>
-            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/apple-logo-white.png">
-                Apple White
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/apple-logo-light.png">
+                Apple Light
             </option>
             <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/google-logo.png">
                 Google
@@ -71,23 +74,23 @@
             <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/openai-logo.png">
                 OpenAI
             </option>
-            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/openai-logo-white.png">
-                OpenAI White
+            <option value="https://s3.amazonaws.com/www.gallardo.solutions/artworks/openai-logo-light.png">
+                OpenAI Light
             </option>
         </datalist>
         <div id="result" x-data="{
         product_path: 'https://s3.amazonaws.com/www.gallardo.solutions/products/',
         images: [
-            'Gildan+Heavy+Cotton+Long+Sleeve+T-Shirt-ligth-blue.png',
             'Gildan Heavy Cotton T-Shirt.png',
+            'Gildan Heavy Cotton T-Shirt-cardinal.png',
             'Gildan Heavy Cotton Long Sleeve T-Shirt-navy.png',
-            'Gildan Heavy Cotton T-Shirt-cardinal.png'
+            '55414_RED_Front_Blank.png'
         ],
         bounding_boxes: [
-            '{&quot;left&quot;: 136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
-            '{&quot;left&quot;: 136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
-            '{&quot;left&quot;: 136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
-            '{&quot;left&quot;: 136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}'
+            '{&quot;left&quot;:136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
+            '{&quot;left&quot;:136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
+            '{&quot;left&quot;:136,&quot;upper&quot;:172,&quot;right&quot;:282,&quot;lower&quot;:300}',
+            '{&quot;left&quot;:460,&quot;upper&quot;:472,&quot;right&quot;:932,&quot;lower&quot;:700}'
             ],
         combinedArray: [],
         api: 'https://psmedx.com/decorate/',
